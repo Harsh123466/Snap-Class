@@ -66,7 +66,7 @@ def style_base_layout():
                 line-height: 1.5 !important;
             }
                 
-            button{
+            button[kind="primary"]{
                 border-radius: 1.5rem !important;
                 background: #5865F2 !important;
                 padding: 10px 20px !important;
