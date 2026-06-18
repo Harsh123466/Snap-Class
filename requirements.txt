@@ -23,3 +23,7 @@ pillow
 
 # for frontend
 streamlit
+
+# for voice recognition
+librosa
+resemblyzer
