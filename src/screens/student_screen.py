@@ -11,11 +11,20 @@ import time
 
 
 def student_dashboard():
-    st.markdown("""
-<h2 style="color:black; text-align: center;">DASHBOARD HERE 
-</h2>
-""", unsafe_allow_html=True)
-
+    student_data = st.session_state.student_data
+    
+    c1, c2 = st.columns(2, vertical_alignment='center', gap='xlarge')
+        
+    with c1:
+        header_dashboard()
+    with c2:
+        st.subheader(f"""Welcome, {student_data['name']} """)
+        if st.button('Logout', type='secondary', key='loginbackbtn', shortcut='control+backspace'):
+            st.session_state['is_logged_in'] = False
+            del st.session_state.student_data
+            st.rerun()
+    
+    st.space()
 
 
 def student_screen():

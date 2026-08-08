@@ -1,8 +1,10 @@
 import streamlit as st
 from src.ui.base_layout import style_background_dashboard, style_base_layout
 from src.components.header import header_dashboard
-from src.database.db import check_teacher_exists, create_teacher, teacher_login
+from src.database.db import check_teacher_exists, create_teacher, teacher_login, get_teacher_subjects
 from src.components.dialog_create_subject import create_subject_dialog
+from src.components.subject_card import subject_card
+from src.components.dialog_share_subject import share_subject_dialog
 
 def teacher_screen():
     
@@ -51,10 +53,11 @@ def teacher_dashboard():
 
     with tab3:
             type3 = 'primary' if st.session_state.current_teacher_tab == 'attendance_records' else 'tertiary'
-            if st.button('Att. Records',type=type3, width='stretch', icon=':material/cards_stack:'):
+            if st.button('Attendance Records',type=type3, width='stretch', icon=':material/cards_stack:'):
                 st.session_state.current_teacher_tab = 'attendance_records'
                 st.rerun()
-    
+
+    st.divider()
     
     if st.session_state.current_teacher_tab == 'take_attendance':
         teacher_tab_take_attendance()
@@ -64,11 +67,11 @@ def teacher_dashboard():
 
     if st.session_state.current_teacher_tab == 'attendance_records':
         teacher_tab_attendance_records()
-    
 
 
 def teacher_tab_take_attendance():
     st.header('Take AI Attendance')
+
 
 def teacher_tab_manage_subjects():
     teacher_id = st.session_state.teacher_data['teacher_id']
@@ -79,11 +82,34 @@ def teacher_tab_manage_subjects():
 
     with col2:
         if st.button('Create New Subject', width='stretch'):
-            create_subject_dialog(teacher_id)
+            create_subject_dialog(teacher_id)                         # for create teacher subject 
 
     # LIST ALL SUBJECTS
-    subjects = get_teacher_subject(teacher_id)
+    subjects = get_teacher_subjects(teacher_id)                       # for display all teacher subjects
     if subjects:
+        for sub in subjects:
+            stats = [
+                ("🫂", "Students", sub['total_students']),
+                ("🕰️", "Classes", sub['total_classes']),
+            ]
+
+            # for share QR code of subject
+
+            def share_btn():
+                if st.button(f"Share Code: {sub['name']}", key=f"share_{sub['subject_code']}", icon=':material/share:'):
+                    share_subject_dialog(sub['name'], sub['subject_code'])
+                    st.space()
+
+
+            subject_card(
+                name = sub['name'],
+                code = sub['subject_code'],
+                section = sub['section'],
+                stats = stats,
+                footer_callback = share_btn
+            )
+    else:
+        st.info("NO SUBJECTS FOUND, CREATE ONE ABOVE")
         
 
 
