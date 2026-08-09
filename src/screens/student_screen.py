@@ -8,6 +8,7 @@ from src.pipelines.voice_pipeline import get_voice_embedding
 from src.database.db import get_all_students, create_student
 import time
 
+from src.components.dialog_enroll import enroll_dialog
 
 
 def student_dashboard():
@@ -25,6 +26,21 @@ def student_dashboard():
             st.rerun()
     
     st.space()
+
+    c1, c2 = st.columns(2)
+
+    with c1:
+        st.header("Your Enrolled Subjects")
+    with c2:
+        if st.button('Enroll in Subject', type='primary', width='stretch'):
+            enroll_dialog()
+
+    st.divider()
+
+    
+
+
+
 
 
 def student_screen():
