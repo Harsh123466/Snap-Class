@@ -2,7 +2,7 @@ import streamlit as st
 
 
 def style_background_home():
-    """Applies the immersive SnapClass portal background."""
+    """Applies the immersive SmartClass portal background."""
     st.markdown(
         """
         <style>
@@ -43,7 +43,7 @@ def style_background_dashboard():
 
 
 def style_base_layout():
-    """Injects the SnapClass design system and global Streamlit component styling."""
+    """Injects the SmartClass design system and global Streamlit component styling."""
     st.markdown(
         """
         <style>

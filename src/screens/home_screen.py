@@ -16,7 +16,7 @@ def home_screen():
             <div class="portal-label">How it works</div>
             <div class="section-title">Scan. Recognize. Record.</div>
             <p class="section-copy">
-                SnapClass turns classroom photos, voice checks, and join codes into verified attendance records.
+                SmartClass turns classroom photos, voice checks, and join codes into verified attendance records.
             </p>
         </div>
         """,

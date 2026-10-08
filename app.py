@@ -5,7 +5,7 @@ from src.screens.home_screen import home_screen
 from src.components.dialog_auto_enroll import auto_enroll_dialog
 
 st.set_page_config(
-    page_title="SnapClass AI Attendance",
+    page_title="SmartClass AI Attendance",
     page_icon="🎓",
     layout="wide",
     initial_sidebar_state="expanded",
