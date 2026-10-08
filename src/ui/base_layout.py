@@ -295,12 +295,20 @@ def style_base_layout():
                 opacity: 1 !important;
                 min-width: 290px !important;
                 width: 290px !important;
+                max-width: 290px !important;
+                position: relative !important;
+                left: 0 !important;
+                top: 0 !important;
+                transform: translateX(0) !important;
+                margin-left: 0 !important;
+                z-index: 10 !important;
             }
 
             [data-testid="stSidebar"] > div:first-child {
                 visibility: visible !important;
                 opacity: 1 !important;
                 width: 100% !important;
+                transform: translateX(0) !important;
             }
 
             [data-testid="stSidebar"] * { color: var(--sc-text) !important; }
