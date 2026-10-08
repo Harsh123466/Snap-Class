@@ -290,6 +290,17 @@ def style_base_layout():
             [data-testid="stSidebar"] {
                 background: rgba(7, 10, 18, 0.96) !important;
                 border-right: 1px solid var(--sc-border) !important;
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                min-width: 290px !important;
+                width: 290px !important;
+            }
+
+            [data-testid="stSidebar"] > div:first-child {
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
             }
 
             [data-testid="stSidebar"] * { color: var(--sc-text) !important; }
