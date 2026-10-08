@@ -76,9 +76,39 @@ def style_base_layout():
                 --sc-focus: 0 0 0 3px rgba(34, 211, 238, 0.28);
             }
 
+            /* ---------- Header / toolbar ----------
+               Keep the header in the DOM so the sidebar open/close button
+               stays reachable. Only hide the parts we don't want. */
             #MainMenu, footer { visibility: hidden; }
-            header[data-testid="stHeader"] { visibility: hidden; }
-            .stAppHeader { display: none !important; }
+
+            header[data-testid="stHeader"],
+            .stAppHeader {
+                background: transparent !important;
+            }
+
+            [data-testid="stDecoration"],
+            [data-testid="stStatusWidget"],
+            [data-testid="stAppDeployButton"],
+            [data-testid="stMainMenu"],
+            [data-testid="stToolbarActions"],
+            .stDeployButton {
+                display: none !important;
+            }
+
+            /* Make the sidebar toggle buttons clearly visible */
+            [data-testid="stSidebarCollapseButton"] button,
+            [data-testid="stExpandSidebarButton"],
+            [data-testid="stExpandSidebarButton"] button,
+            [data-testid="collapsedControl"],
+            [data-testid="stSidebarCollapsedControl"] {
+                visibility: visible !important;
+                opacity: 1 !important;
+                color: var(--sc-text) !important;
+                background: rgba(15, 23, 42, 0.85) !important;
+                border: 1px solid var(--sc-border) !important;
+                border-radius: var(--sc-radius-sm) !important;
+                z-index: 1000 !important;
+            }
 
             html, body, [class*="css"], .stApp {
                 color: var(--sc-text) !important;
@@ -87,7 +117,7 @@ def style_base_layout():
 
             .block-container {
                 max-width: 1240px;
-                padding-top: 1.15rem !important;
+                padding-top: 2.5rem !important;
                 padding-bottom: 4rem !important;
             }
 
@@ -287,28 +317,20 @@ def style_base_layout():
             .glass-tile b, .glass-tile span { display: block; }
             .glass-tile span { color: #cbd5e1; font-size: 0.78rem; margin-top: 0.2rem; }
 
+            /* ---------- Sidebar ----------
+               Style only. Do NOT set transform / position / left / margin /
+               display / visibility / opacity here: Streamlit needs control
+               of those to slide the sidebar in and out. */
             [data-testid="stSidebar"] {
                 background: rgba(7, 10, 18, 0.96) !important;
                 border-right: 1px solid var(--sc-border) !important;
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
+            }
+
+            /* Width only applies while expanded, so collapsing still works */
+            [data-testid="stSidebar"][aria-expanded="true"] {
                 min-width: 290px !important;
                 width: 290px !important;
                 max-width: 290px !important;
-                position: relative !important;
-                left: 0 !important;
-                top: 0 !important;
-                transform: translateX(0) !important;
-                margin-left: 0 !important;
-                z-index: 10 !important;
-            }
-
-            [data-testid="stSidebar"] > div:first-child {
-                visibility: visible !important;
-                opacity: 1 !important;
-                width: 100% !important;
-                transform: translateX(0) !important;
             }
 
             [data-testid="stSidebar"] * { color: var(--sc-text) !important; }
@@ -510,6 +532,9 @@ def style_base_layout():
 
             hr { border-color: rgba(148, 163, 184, 0.18) !important; }
 
+            /* ---------- Mobile ----------
+               No sidebar rules here: Streamlit already turns the sidebar
+               into a slide-over overlay on phones. */
             @media (max-width: 760px) {
                 .block-container { padding-left: 1rem !important; padding-right: 1rem !important; }
                 .home-hero { padding-top: 2rem; }
