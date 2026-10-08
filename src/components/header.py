@@ -1,24 +1,50 @@
 import streamlit as st
 
+
 def header_home():
-    
+    """Renders the SnapClass landing hero."""
     logo_url = "https://i.ibb.co/YTYGn5qV/logo.png"
 
-    st.markdown(f"""
-        <div style='display: flex; flex-direction:column; align-items:center; justify-content:center; margin-bottom:30px margin-top:10px'>
-            <img src='{logo_url}' style='height:100px;' />
-            <h1 style='text-align: center; color: #E0E3FF'>SNAP<br/>CLASS </h1>
+    st.markdown(
+        f"""
+        <div class="home-hero sc-fade-in">
+            <div class="brand-mark">
+                <img src="{logo_url}" alt="SnapClass Logo" />
+            </div>
+            <div style="margin-top: 1.25rem;">
+                <div class="home-kicker">AI-powered attendance workspace</div>
+                <div class="home-title">SnapClass <span class="accent-text">Attendance</span></div>
+                <p class="home-subtitle">
+                    A premium biometric and voice attendance system for modern classrooms.
+                    Create class spaces, verify presence with AI, and keep every session record clear.
+                </p>
+                <div class="chip-row">
+                    <span class="chip">Face recognition</span>
+                    <span class="chip">Voice verification</span>
+                    <span class="chip">QR class joining</span>
+                </div>
+            </div>
         </div>
-""", unsafe_allow_html=True)
+        """,
+        unsafe_allow_html=True,
+    )
+
 
 def header_dashboard():
-
+    """Renders the compact dashboard brand header."""
     logo_url = "https://i.ibb.co/YTYGn5qV/logo.png"
-    
-    st.markdown(f"""
-        <div style="display:flex; align-items:center; justify-content:center; gap:10px">
-            <img src='{logo_url}' style='height:85px;' />
-            <h2 style='text-align:left; color:#5865F2'>SNAP<br/>CLASS</h1>
-        </div>   
-                
-                """, unsafe_allow_html=True)
+
+    st.markdown(
+        f"""
+        <div class="dashboard-brand sc-fade-in">
+            <div class="dashboard-brand-mark">
+                <img src="{logo_url}" alt="SnapClass Logo" />
+            </div>
+            <div>
+                <div class="eyebrow">Smart EdTech SaaS Platform</div>
+                <div class="panel-title" style="margin-top:0;">SnapClass</div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
