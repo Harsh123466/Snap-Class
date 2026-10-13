@@ -6,7 +6,7 @@ import streamlit as st
 
 @st.dialog("Share Subject Join Code & QR")
 def share_subject_dialog(subject_name, subject_code):
-    app_domain = "http://localhost:8501"
+    app_domain = "https://snap-classattendance.streamlit.app"
     join_url = f"{app_domain}/?join-code={subject_code}"
     safe_subject_name = html.escape(str(subject_name))
     safe_subject_code = html.escape(str(subject_code))
