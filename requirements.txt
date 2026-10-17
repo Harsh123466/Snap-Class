@@ -1,29 +1,28 @@
-# ultilities
 
+# Utilities
 numpy
 pandas
 
-# for face recognition
+# Face recognition
 scikit-learn
 dlib-bin
-
-# Install from github
 git+https://github.com/ageitgey/face_recognition_models
 setuptools<70.0.0
 
-# database
+# Database and authentication
 supabase
-bcrypt  # for password hashing
+bcrypt
 
-# for QR code generation
+# QR code generation
 segno
 
-# for image processing
+# Image processing
 pillow
 
-# for frontend
-streamlit
+# Frontend - compatible versions
+streamlit>=1.40.0,<2.0.0
+altair>=5.0.0,<6.0.0
 
-# for voice recognition
+# Voice recognition
 librosa
 resemblyzer
